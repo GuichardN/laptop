@@ -1,0 +1,257 @@
+/*
+====================================
+    GUISHOOTS PHOTOGRAPHY - GALLERY CSS
+====================================
+*/
+
+/* --- Variables & Reset --- */
+:root {
+    --accent: #e65100; /* Rust Orange */
+    --dark-bg: #0a0a0a;
+    --light-bg: #fff;
+    --text-color-dark: #333;
+    --text-color-light: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: var(--light-bg);
+    color: var(--text-color-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.row {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 50px; /* Standard horizontal padding */
+}
+
+/* ====================================
+    NAVIGATION 
+====================================
+*/
+
+nav {
+    position: sticky; /* Use sticky for a modern feel */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.primary-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 50px;
+    list-style: none;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.navlogo {
+    height: 50px;
+    width: auto;
+    margin-right: auto; /* Pushes links to the right */
+}
+
+.primary-navigation li {
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.primary-navigation li a {
+    color: #666;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.primary-navigation li a:hover,
+.primary-navigation li a.active {
+    color: var(--accent); /* Use accent color for active/hover */
+}
+
+/* ====================================
+    HEADER 
+====================================
+*/
+
+header.dark {
+    background: var(--dark-bg);
+    color: var(--text-color-light);
+    padding: 150px 0 50px 0; /* Add top padding to clear the sticky nav */
+    text-align: center;
+}
+
+header .headline {
+    font-size: 64px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+header .subhead {
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+/* ====================================
+    GALLERY GRID 
+====================================
+*/
+
+.sets-gallery {
+    padding: 80px 50px;
+}
+
+.sets-grid {
+    display: grid;
+    /* Default: 4 columns, adjusting dynamically based on 280px minimum size */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px;
+}
+
+/* --- Individual Set Thumbnail --- */
+.set-thumb {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--dark-bg);
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.set-thumb:hover {
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.set-thumb img {
+    width: 100%;
+    height: 350px; /* Fixed height for uniformity */
+    object-fit: cover;
+    display: block;
+    opacity: 0.8;
+    filter: brightness(0.9) grayscale(0.2);
+    transition: opacity 0.5s ease, filter 0.5s ease, transform 6s ease-out; /* Slow zoom on hover */
+}
+
+.set-thumb:hover img {
+    opacity: 1;
+    filter: brightness(1) grayscale(0);
+    transform: scale(1.05); /* Subtle zoom */
+}
+
+/* --- Title Overlay --- */
+.set-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 15px;
+    color: var(--text-color-light);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    z-index: 2;
+    transition: padding 0.3s ease;
+}
+
+.set-thumb:hover .set-title {
+    padding-bottom: 30px; /* Slide up slightly on hover */
+    color: var(--accent); /* Highlight title with accent color */
+}
+
+/* ====================================
+    FOOTER 
+====================================
+*/
+
+footer {
+    padding: 40px 50px;
+    text-align: center;
+    background: var(--light-bg);
+    border-top: 1px solid #e5e5e5;
+}
+
+footer p {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #999;
+}
+
+
+/* ====================================
+    RESPONSIVE ADJUSTMENTS 
+====================================
+*/
+
+@media (max-width: 900px) {
+    .sets-grid {
+        /* On medium screens, adjust min size to allow 3 columns */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .row {
+        padding: 0 20px;
+    }
+    
+    .primary-navigation {
+        padding: 15px 20px;
+        /* Allow navigation items to wrap if screen is very small */
+        flex-wrap: wrap; 
+    }
+
+    .primary-navigation li {
+        margin-left: 15px;
+    }
+
+    .navlogo {
+        height: 40px;
+    }
+
+    header.dark {
+        padding-top: 120px;
+    }
+
+    header .headline {
+        font-size: 40px;
+        letter-spacing: 4px;
+    }
+
+    .sets-gallery {
+        padding: 40px 20px;
+    }
+
+    .sets-grid {
+        /* On small screens, switch to 2 columns */
+        grid-template-columns: 1fr 1fr; 
+        gap: 15px;
+    }
+    
+    .set-thumb img {
+        height: 200px; /* Reduce image height on mobile */
+    }
+}

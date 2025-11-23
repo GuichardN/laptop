@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guishoots Photography</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        
+        <a href="index.html" class="mobile-logo">
+            <span class="logo-script">Guichard Narcisse</span>
+        </a>
+
+        <button class="menu-toggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+        </button>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="featured.html">Featured</a></li>
+
+            <li class="desktop-logo-item"> 
+                <a href="index.html" class="nav-logo-text">
+                    <span class="logo-script">Guichard Narcisse</span>
+                    <span class="logo-line"></span>
+                    <span class="logo-subtext">Automotive Photography Media</span>
+                </a>
+            </li>
+            
+            <li><a href="Gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="imgWrapper">
+        <div class="hero-image-container">
+            <img class="abouthero1 active" src="photograhyhero-1.jpg" alt="Hero Image">
+        </div>
+    </div>
+
+    <section  id="about" class="row widescreen-row">
+        <div class="about-wrapper">
+            <h2 class="aboutme" data-aos="fade-up" style="color: black;">About Me</h2>
+            
+            <img class="aboutmehero1" src="IMG_5904-1.jpg" alt="">
+            <p style="color: black;" class="aboutme" data-aos="fade-up" data-aos-delay="100">
+                Hello, my name is Guichard. From gaming to skateboarding to modifying cars, I’ve always had an itch to create. I started out making edits — syncing clips to music and cutting everything together so it flowed. That same energy carried into cars. I picked up my first camera to shoot my own builds, and once I got comfortable, I started shooting my friends’ cars too.
+
+This site is just a place to showcase some of those shoots — the moments we’ve captured along the way. I still shoot with the same approach: keep it clean, keep it flowing, keep it real. And honestly, time always flies when I’m out there shooting
+            </p>
+            <img class="aboutmehero2 clickable-img" src="EBC INSTALL (1 of 9).JPG" alt="">
+            <img class="aboutmehero3" src="lens filter (1 of 1)-2.JPG" alt="">
+            <img class="aboutmehero4" src="SUDS MAY 23rd-8.jpg" alt="">
+            <img class="aboutmehero5" src="Denny's Customs 2.JPG" alt="">
+        </div>
+    </section>
+
+    <section class="aboutme3">
+        <div class="content-grid">
+            <div data-aos="fade-up">
+                <h2 class="detail" style="font-size: 32px; color: black;">DETAIL</h2>
+                 <p>Being your own biggest critic helps you zero in on what needs refining before you decide a photo is finished.
+                    The first shot is rarely the best one, so I always take multiple angles and compositions to ensure I capture the perfect moment. </p>
+            </div>
+            <img class="abouthero3" src="Full Sets Images\Hype R Revive 2023\Acuity Shift Knob\Hype R Acuity Shift Knob (6 of 7).webp" alt="Self Portrait" data-aos="fade-up" data-aos-delay="200">
+        </div>
+    </section>
+
+    <section class="videosection">
+        <video src="Not A Farewellw Oct 13 Handbrake.mp4" controls autoplay muted loop></video>
+    </section>
+    <section class="portfolio-section">
+        <h2 data-aos="fade-up">Portfolio</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="Full Sets Images/Hype R Fall 2023/main.webp" alt="Portfolio Item"></div>
+            <div class="gallery-item"><img src="Full Sets Images/Charles Pitstop Boys/main.webp" alt="Portfolio Item"></div>
+            <div class="gallery-item"><img src="Full Sets Images/Josh Pitstop Boys/main.webp" alt="Portfolio Item"></div>
+            <div class="gallery-item"><img src="Full Sets Images/Ford Photo Contest/main.webp" alt="Portfolio Item"></div>
+            <div class="gallery-item"><img src="Full Sets Images/Hype R Revive 2023/main.webp" alt="Portfolio Item"></div>
+            <div class="gallery-item"><img src="Full Sets Images/Pitstop Boys Alert Road/main.webp" alt="Portfolio Item"></div>
+            </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Guishoots Photography. All rights reserved.</p>
+    </footer>
+    <div class="modal" id="modal">
+        <span class="modal-close" id="modal-close">&times;</span>
+        <span class="modal-arrow modal-left" id="modal-left">&#8592;</span>
+        <span class="modal-arrow modal-right" id="modal-right">&#8594;</span>
+        <div class="modal-content">
+            <img src="" alt="Enlarged Photo" id="modal-img">
+        </div>
+    </div>
+    <script>
+        const menuBtn = document.querySelector('.menu-toggle');
+        const navMenu = document.getElementById('navMenu');
+        const navbar = document.querySelector('.navbar');
+
+        menuBtn.addEventListener('click', () => {
+            const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+            
+            // Toggle ARIA and Class
+            menuBtn.setAttribute('aria-expanded', !isExpanded);
+            navMenu.classList.toggle('active');
+            
+            // Optional: Add background to navbar when menu is open so text is readable
+            if (!isExpanded) {
+                navbar.style.background = "#1B1B1B"; 
+                document.body.style.overflow = 'hidden'; // Stop scroll
+            } else {
+                navbar.style.background = "transparent";
+                document.body.style.overflow = ''; // Restore scroll
+            }
+        });
+    </script>
+</body>
+</html>

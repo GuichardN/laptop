@@ -1,0 +1,213 @@
+/*
+====================================
+    GUISHOOTS PHOTOGRAPHY - WARM PAPER THEME
+    (For HYPE-R FALL Album Page)
+====================================
+*/
+
+/* --- Variables & Reset --- */
+:root {
+    --bg-color: #FDFBF7;        /* Warm Paper */
+    --strip-bg: #FFFFFF;        /* Pure White for the gallery strip/modal */
+    --text-main: #1B1B1B;       /* Dark Charcoal */
+    --text-muted: #666666;      /* Grey */
+    --accent: #D35400;          /* Rust Orange */
+    --nav-bg: rgba(253, 251, 247, 0.98); /* Semi-transparent nav over warm paper */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.row {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 50px; 
+}
+
+/* ====================================
+    NAVIGATION 
+====================================
+*/
+
+nav {
+    position: sticky; 
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--nav-bg);
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.primary-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 50px;
+    list-style: none;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.navlogo {
+    height: 50px;
+    width: auto;
+    margin-right: auto;
+}
+
+.primary-navigation li {
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.primary-navigation li a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.primary-navigation li a:hover,
+.primary-navigation li a.active {
+    color: var(--accent); 
+}
+
+/* ====================================
+    HEADER 
+====================================
+*/
+
+header.dark {
+    background: var(--bg-color); 
+    color: var(--text-main);
+    padding: 150px 0 50px 0; 
+    text-align: center;
+}
+
+header .headline {
+    font-size: 64px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+header .subhead {
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+header p {
+    color: var(--text-main);
+    margin-top: 10px;
+}
+
+header a {
+    color: var(--accent) !important; 
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block;
+    margin-top: 15px;
+    transition: opacity 0.3s;
+    font-weight: 600;
+}
+
+header a:hover {
+    opacity: 0.8;
+}
+
+/* ====================================
+    GALLERY PICTURES GRID 
+====================================
+*/
+
+.row.light {
+    padding: 50px 50px 80px 50px;
+    background: var(--strip-bg); 
+}
+
+.pics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 15px;
+}
+
+.pics-grid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border-radius: 4px;
+}
+
+.pics-grid img:hover {
+    transform: scale(0.98); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ====================================
+    FOOTER 
+====================================
+*/
+
+footer {
+    padding: 40px 50px;
+    text-align: center;
+    background: var(--bg-color); 
+    border-top: 1px solid #e5e5e5;
+}
+
+footer p {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+/* ====================================
+    RESPONSIVE ADJUSTMENTS 
+====================================
+*/
+
+@media (max-width: 768px) {
+    .row {
+        padding: 0 20px;
+    }
+    
+    .primary-navigation {
+        padding: 15px 20px;
+    }
+    
+    header .headline {
+        font-size: 40px;
+    }
+    
+    .pics-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pics-grid {
+        grid-template-columns: 1fr;
+    }
+}

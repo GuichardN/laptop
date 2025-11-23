@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+</head>
+<body>
+<nav>
+    <ul id="primary-navigation" class="primary-navigation flex">
+        <img src="logo.webp" alt="Guishoots Photography Logo" class="navlogo">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="featured.html">Featured</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="active"><a href="Gallery.html">Gallery</a></li>
+    </ul>
+</nav>
+<header class="row dark">
+    <div class="text">
+        <h1 class="headline">Gallery</h1>
+        <h2 class="subhead">Browse Previous Shoots</h2>
+    </div>
+</header>
+
+<section class="sets-gallery row light">
+    <div class="sets-grid">
+       <div class="set-thumb" data-url="set-hype-r-fall-2023.html">
+            <img src="Full Sets Images/Hype R Fall 2023/main.webp" alt="Hype R Fall 2023 thumbnail">
+            <div class="set-title">Hype R Fall 2023</div>
+        </div>
+        <div class="set-thumb" data-url="set-charles-pitstop-boys.html">
+            <img src="Full Sets Images/Charles Pitstop Boys/main.webp" alt="Charles Pitstop Boys thumbnail">
+            <div class="set-title">Charles Pitstop Boys</div>
+        </div>
+        <div class="set-thumb" data-url="set-josh-pitstop-boys.html">
+            <img src="Full Sets Images/Josh Pitstop Boys/main.webp" alt="Josh Pitstop Boys thumbnail">
+            <div class="set-title">Josh Pitstop Boys</div>
+        </div>
+        
+        <div class="set-thumb" data-url="set-ford-photo-contest.html">
+            <img src="Full Sets Images/Ford Photo Contest/main.webp" alt="Ford Photo Contest thumbnail">
+            <div class="set-title">Ford Photo Contest</div>
+        </div>
+        
+        <div class="set-thumb" data-url="set-hype-r-revive-2023.html">
+            <img src="Full Sets Images/Hype R Revive 2023/main.webp" alt="Hype R Revive 2023 thumbnail">
+            <div class="set-title">Hype R Revive 2023</div>
+        </div>
+        
+        <div class="set-thumb" data-url="set-pitstop-boys-alert-road.html">
+            <img src="Full Sets Images/Pitstop Boys Alert Road/main.webp" alt="Pitstop Boys Alert Road thumbnail">
+            <div class="set-title">Pitstop Boys Alert Road</div>
+        </div>
+        <div class="set-thumb" data-url="set-reg-type-r-set.html">
+            <img src="Full Sets Images/Reg Type R Set/main.webp" alt="Reg Type R Set thumbnail">
+            <div class="set-title">Reg Type R Set</div>
+        </div>
+        <div class="set-thumb" data-url="set-train-station-hype-r.html">
+            <img src="Full Sets Images/Train Station Hype R/main.webp" alt="Train Station Hype R thumbnail">
+            <div class="set-title">Train Station Hype R</div>
+        </div>
+        <div class="set-thumb" data-url="set-type-r-fasthouse-fall-24.html">
+            <img src="Full Sets Images/Type R Fasthouse Fall 24/main.webp" alt="Type R Fasthouse Fall 24 thumbnail">
+            <div class="set-title">Type R Fasthouse Fall 24</div>
+        </div>
+        <div class="set-thumb" data-url="set-xander-nac-supra-set.html">
+            <img src="Full Sets Images/Xander NAC Supra Set/main.webp" alt="Xander NAC Supra Set thumbnail">
+            <div class="set-title">Xander NAC Supra Set</div>
+        </div>
+         <div class="set-thumb" data-url="set-90d-trainstation-chinatown.html">
+            <img src="Full Sets Images/90D Trainstation-Chinatown/main.webp" alt="90D Trainstation-Chinatown thumbnail">
+            <div class="set-title">90D Trainstation-Chinatown</div>
+        </div>
+        <div class="set-thumb" data-url="set-dennys-customs-june24.html">
+            <img src="Full Sets Images/Denny_s Customs June 24/main.webp" alt="Denny_s Customs June 24 thumbnail">
+            <div class="set-title">Denny_s Customs June 24</div>
+        </div>
+        <!-- Add more sets as needed -->
+    </div>
+</section>
+<script>
+// Redirect to album page on click
+document.querySelectorAll('.set-thumb').forEach(function(thumb) {
+  thumb.addEventListener('click', function() {
+    var url = thumb.getAttribute('data-url');
+    if (url) {
+      window.location.href = url;
+    }
+  });
+});
+</script>
+</body>
+</html>
+<footer>
+    <p>&copy; 2025 Guishoots Photography. All rights reserved.</p>
+    </footer

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guishoots | 40-20-40 Layout</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+
+    <div class="tri-layout">
+        
+        <div class="visual-stage" id="mainStage"></div>
+
+        <div class="gallery-strip">
+            
+            <div class="gallery-item" onclick="changeImage('TECH BLOCK (17 of 94).webp')">
+                <img src="TECH BLOCK (17 of 94).webp" alt="Lookout 1">
+            </div>
+
+            <div class="gallery-item" onclick="changeImage('IMG_3468.webp')">
+                <img src="SUDS MAY 23rd-1.webp" alt="Car Shot">
+            </div>
+
+            <div class="gallery-item" onclick="changeImage('LOOKOUT SELF (3 of 3).webp')">
+                <img src="90DChinatown-trainstation-5.webp" alt="Lookout 3">
+            </div>
+
+            <div class="gallery-item" onclick="changeImage('LOOKOUT SELF (1 of 3).webp')">
+                <img src="LOOKOUT SELF (1 of 3).webp" style="filter: hue-rotate(90deg);" alt="Demo Filter">
+            </div>
+
+             <div class="gallery-item" onclick="changeImage('IMG_3468.webp')">
+                <img src="IMG_3468.webp" style="filter: sepia(1);" alt="Demo Sepia">
+            </div>
+
+        </div>
+
+        <div class="content-side">
+            
+            <nav>
+                <ul class="primary-navigation">
+                    <img src="logo.webp" alt="Logo" class="navlogo">
+                    <li><a class="active" href="index.html">Home</a></li>
+                    <li><a href="featured.html">Featured</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="Gallery.html">Gallery</a></li>
+                </ul>
+            </nav>
+
+            <main>
+                <header>
+                    <h1>Guichard Narcisse</h1>
+                    <h3>Photographer & Developer</h3>
+                </header>
+
+                <section class="about-section">
+                    <h2 class="headline">About Me</h2>
+                    <p class="bio-text">I enjoy taking photos and also have a passion for cars.</p>
+                    <p class="bio-text">I started off modifying cars then wanted to photograph them. That's as short of a story as it gets on why I picked up my first camera.</p>
+                </section>
+
+                <section class="video-section">
+                    <h2 class="headline" style="font-size: 1.5rem; border:none; padding:0; color: #d1d7f6;">Latest Reel</h2>
+                    <video id="myVideo" controls muted playsinline loop class="styled-video">
+                        <source src="Not A Farewellw Oct 13 Handbrake.mp4" type="video/mp4">
+                    </video> 
+                </section>
+
+                <footer>
+                    <p>&copy; 2025 Guishoots Photography.</p>
+                </footer>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Set the initial image on page load
+        document.getElementById('mainStage').style.backgroundImage = "url('img_3468.webp')";
+
+        function changeImage(filename) {
+            const stage = document.getElementById('mainStage');
+            // Smooth fade effect could be added here, but for now we switch instantly
+            stage.style.backgroundImage = `url('${filename}')`;
+        }
+    </script>
+
+</body>
+</html>

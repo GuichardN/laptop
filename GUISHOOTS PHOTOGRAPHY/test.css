@@ -1,0 +1,263 @@
+/* --- RESET & VARS --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-color: #FDFBF7;      /* Warm Paper */
+    --strip-bg: #FDFBF7;      /* Pure White for the gallery strip */
+    --text-main: #1B1B1B;     /* Dark Charcoal */
+    --text-muted: #666666;    /* Grey */
+    --accent: #D35400;        /* Rust Orange (New Theme Color) */
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-main);
+    height: 100vh;
+    overflow: hidden; /* Prevents the whole page from scrolling */
+}
+
+/* --- THE 40/20/40 GRID --- */
+.tri-layout {
+    display: grid;
+    grid-template-columns: 40% 20% 40%; /* The Magic Split */
+    height: 100vh;
+    width: 100%;
+}
+
+/* --- COL 1: VISUAL STAGE (40%) --- */
+.visual-stage {
+    background-color: #ccc; /* Placeholder color */
+    background-size: cover;
+    background-position: center;
+    /* We remove the old clip-paths to keep the box clean */
+    border-right: 5px solid var(--accent); /* Rust border */
+    transition: background-image 0.3s ease-in-out;
+}
+
+/* --- COL 2: GALLERY STRIP (20%) --- */
+.gallery-strip {
+    background-color: var(--strip-bg);
+    overflow-y: auto; /* Scrollable */
+    padding: 1.5rem;
+    border-right: 1px solid #e0e0e0;
+    
+    /* Hide Scrollbar */
+    scrollbar-width: none; 
+}
+.gallery-strip::-webkit-scrollbar { display: none; }
+
+.gallery-item {
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.gallery-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Optional: make thumbnails black & white until hovered */
+    
+    transition: filter 0.3s;
+}
+
+.gallery-item:hover img {
+    filter: grayscale(0%);
+}
+
+/* --- COL 3: CONTENT SIDE (40%) --- */
+.content-side {
+    background-color: var(--bg-color);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* --- NAVIGATION --- */
+nav {
+    background: var(--bg-color);
+    /* Minimalist bottom border */
+    border-bottom: 1px solid #ddd; 
+    padding: 1.5rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.primary-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.navlogo { width: 50px; height: auto; }
+
+.primary-navigation a {
+    color: var(--text-main);
+    font-weight: 500;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    padding-bottom: 5px;
+    transition: color 0.2s;
+}
+
+.primary-navigation a:hover, 
+.primary-navigation a.active {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+}
+
+/* --- TEXT CONTENT --- */
+main {
+    padding: 3rem 4rem;
+}
+
+header { margin-bottom: 3rem; }
+
+h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    color: var(--text-main);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+h3 {
+    font-family: 'Roboto', sans-serif;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    /* New accent border style */
+    border-left: 4px solid var(--accent); 
+    padding-left: 15px;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+}
+
+.bio-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    max-width: 650px;
+}
+
+/* --- VIDEO --- */
+.video-section {
+    margin-top: 4rem;
+}
+
+.styled-video {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+footer {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #999;
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 900px) {
+    body { overflow: auto; height: auto; }
+
+    .tri-layout {
+        grid-template-columns: 1fr; /* Stack everything vertically */
+        height: auto;
+    }
+
+    /* 1. Main Image stays on top */
+    .visual-stage {
+        height: 50vh;
+        min-height: 300px;
+        border-right: none;
+        border-bottom: 4px solid var(--accent);
+    }
+
+    /* 2. Content moves to middle */
+    .content-side {
+        order: 2;
+        height: auto;
+        overflow: visible;
+    }
+
+    main { padding: 2rem 1.5rem; }
+    h1 { font-size: 2.5rem; }
+
+    /* 3. Gallery Strip moves to bottom as a grid */
+    .gallery-strip {
+        order: 3;
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 cols on mobile */
+        gap: 1rem;
+        border-top: 1px solid #ddd;
+    }
+}
+
+/* 1. Define the Animation (Paste this at the top of your CSS) */
+@keyframes entranceMask {
+    0% {
+        /* Start dark with no glow */
+        box-shadow: inset 0 0 0 0 var(--accent);
+        filter: brightness(0.8);
+    }
+    50% {
+        /* The Flash: Large inner glow of Rust Orange */
+        box-shadow: inset 0 0 100px 20px var(--accent);
+        filter: brightness(1.1); /* Slightly brighter than normal */
+    }
+    100% {
+        /* Settle: Fade out the glow, keep the image natural */
+        box-shadow: inset 0 0 0 0 transparent;
+        filter: brightness(1);
+    }
+}
+
+/* 2. Apply it to the Stage (Replace your existing .visual-stage) */
+.visual-stage {
+    background-color: #ccc;
+    background-size: cover;
+    background-position: center;
+    
+    /* Keeps the right border you liked */
+    border-right: 5px solid var(--accent); 
+    
+    /* Smooth transition for when you click gallery items */
+    transition: background-image 0.3s ease-in-out;
+
+    /* THE GLOW ANIMATION: Runs once for 1.5 seconds */
+    animation: entranceMask 1.5s ease-out forwards;
+}

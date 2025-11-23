@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guishoots Photography</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #fff;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation - Dennis Noten Style */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .primary-navigation {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 50px;
+            list-style: none;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .navlogo {
+            height: 50px;
+            width: auto;
+        }
+
+        .primary-navigation li {
+            display: inline-block;
+            margin-left: 40px;
+        }
+
+        .primary-navigation li a {
+            color: #666;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .primary-navigation li a:hover,
+        .primary-navigation li a.active {
+            color: #000;
+        }
+
+        /* Hero Section with Image Slideshow */
+        .imgWrapper {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(to right, #b49f99, #b19a4e);
+        }
+
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .abouthero1, .abouthero2test, .abouthero3test {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            filter: brightness(0.7);
+        }
+
+        .abouthero1.active,
+        .abouthero2test.active,
+        .abouthero3test.active {
+            opacity: 1;
+        }
+
+        .imgWrapper h1 {
+            position: relative;
+            z-index: 2;
+            font-size: 72px;
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: #fff;
+            text-align: center;
+        }
+
+        .imgWrapper h3 {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            font-size: 13px;
+            letter-spacing: 3px;
+            font-weight: 300;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* About Section - Text Style */
+        section#about {
+            padding: 120px 50px;
+            background: #fff;
+        }
+
+        .about-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h2.aboutme {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 400;
+            margin-bottom: 40px;
+            color: #999;
+        }
+
+        p.aboutme {
+            font-size: 28px;
+            line-height: 1.6;
+            color: #333;
+            font-weight: 300;
+            margin-bottom: 60px;
+        }
+
+        /* Video Section */
+        #myVideo {
+            width: 100%;
+            max-width: 1000px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Story Section - Two Column Layout */
+        .aboutme3 {
+            padding: 120px 50px;
+            background: #f9f9f9;
+        }
+
+        .aboutme3 .content-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .aboutme3 h2 {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color: #999;
+        }
+
+        .aboutme3 p {
+            font-size: 18px;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .abouthero3 {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Portfolio Preview Grid */
+        .portfolio-section {
+            padding: 120px 50px;
+        }
+
+        .portfolio-section h2 {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #999;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/2;
+            background: #f0f0f0;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, filter 0.6s ease;
+            filter: grayscale(0.2);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            filter: grayscale(0);
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 50px;
+            text-align: center;
+            background: #fff;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        footer p {
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .aboutme3 .content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .primary-navigation {
+                padding: 15px 30px;
+                flex-wrap: wrap;
+            }
+
+            .primary-navigation li {
+                margin-left: 20px;
+            }
+
+            .navlogo {
+                height: 35px;
+            }
+
+            .imgWrapper h1 {
+                font-size: 36px;
+                letter-spacing: 4px;
+            }
+
+            .imgWrapper h3 {
+                font-size: 11px;
+                bottom: 60px;
+            }
+
+            section#about,
+            .aboutme3,
+            .portfolio-section {
+                padding: 80px 30px;
+            }
+
+            p.aboutme {
+                font-size: 20px;
+            }
+
+            .aboutme3 p {
+                font-size: 16px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul id="primary-navigation" class="primary-navigation">
+            <li style="margin-left: 0;">
+                <img src="logo.webp" alt="Guishoots Photography Logo" class="navlogo">
+            </li>
+            <li><a class="active" href="index.html">Home</a></li>
+            <li><a href="featured.html">Featured</a></li>
+            <li><a href="Gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="imgWrapper">
+        <div class="hero-image-container">
+            <img class="abouthero1 active" src="LOOKOUT SELF (3 of 3).webp" alt="">
+            <img class="abouthero2test" src="IMG_3468.webp" alt="">
+            <img class="abouthero3test" src="LOOKOUT SELF (1 of 3).webp" alt="">
+        </div>
+        <h1 data-aos="fade-up">Guichard Narcisse</h1>
+        <h3 data-aos="fade-up" data-aos-delay="200">Photographer & Developer</h3>
+    </div>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-wrapper">
+            <h2 class="aboutme" data-aos="fade-up">About Me</h2>
+            <p class="aboutme" data-aos="fade-up" data-aos-delay="100">
+                I enjoy taking photos and also have a passion for cars.
+            </p>
+            <video id="myVideo" controls muted playsinline loop data-aos="fade-up" data-aos-delay="200">
+                <source src="Not A Farewellw Oct 13 Handbrake.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="aboutme3">
+        <div class="content-grid">
+            <div data-aos="fade-up">
+                <h2>My Journey</h2>
+                <p>I started off modifying cars then wanted to photograph them.</p>
+                <p>That's as short of a story as it gets on why I picked up my first camera.</p>
+                <p>Now I've developed the itch for developing.</p>
+            </div>
+            <img class="abouthero3" src="LOOKOUT SELF (1 of 3).webp" alt="" data-aos="fade-up" data-aos-delay="200">
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section">
+        <h2 data-aos="fade-up">Portfolio</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-aos="fade-up">
+                <img src="Full Sets Images/Hype R Fall 2023/main.webp" alt="Hype R Fall 2023">
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="50">
+                <img src="Full Sets Images/Charles Pitstop Boys/main.webp" alt="Charles Pitstop Boys">
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                <img src="Full Sets Images/Josh Pitstop Boys/main.webp" alt="Josh Pitstop Boys">
+            </div>
+            <div class="gallery-item" data-aos="fade-up">
+                <img src="Full Sets Images/Ford Photo Contest/main.webp" alt="Ford Photo Contest">
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="50">
+                <img src="Full Sets Images/Hype R Revive 2023/main.webp" alt="Hype R Revive 2023">
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                <img src="Full Sets Images/Pitstop Boys Alert Road/main.webp" alt="Pitstop Boys Alert Road">
+            </div>
+            <div class="gallery-item" data-aos="fade-up">
+                <img src="Full Sets Images/Reg Type R Set/main.webp" alt="Reg Type R Set">
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="50">
+                <img src="Full Sets Images/Train Station Hype R/main.webp" alt="Train Station Hype R">
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                <img src="Full Sets Images/Type R Fasthouse Fall 24/main.webp" alt="Type R Fasthouse Fall 24">
+            </div>
+            <div class="gallery-item" data-aos="fade-up">
+                <img src="Full Sets Images/Xander NAC Supra Set/main.webp" alt="Xander NAC Supra Set">
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="50">
+                <img src="Full Sets Images/90D Trainstation-Chinatown/main.webp" alt="90D Trainstation-Chinatown">
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                <img src="Full Sets Images/Denny_s Customs June 24/main.webp" alt="Denny's Customs June 24">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Guishoots Photography. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50,
+            easing: 'ease-out'
+        });
+
+        // Hero Image Slideshow
+        const heroImages = [
+            document.querySelector('.abouthero1'),
+            document.querySelector('.abouthero2test'),
+            document.querySelector('.abouthero3test')
+        ];
+        let currentImageIndex = 0;
+
+        function rotateImages() {
+            heroImages[currentImageIndex].classList.remove('active');
+            currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+            heroImages[currentImageIndex].classList.add('active');
+        }
+
+        setInterval(rotateImages, 5000);
+
+        // Video Auto-play on Scroll
+        const video = document.getElementById('myVideo');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        if (video) {
+            observer.observe(video);
+        }
+    </script>
+</body>
+</html>

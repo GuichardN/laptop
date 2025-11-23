@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+</head>
+<body>
+  <nav class="navbar internal">
+        
+        <a href="index.html" class="mobile-logo">
+            <span class="logo-script">Guichard Narcisse</span>
+        </a>
+
+        <button class="menu-toggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+        </button>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="featured.html">Featured</a></li>
+
+            <li class="desktop-logo-item"> 
+                <a href="index.html" class="nav-logo-text">
+                    <span class="logo-script">Guichard Narcisse</span>
+                    <span class="logo-line"></span>
+                    <span class="logo-subtext">Automotive Photography Media</span>
+                </a>
+            </li>
+            
+            <li><a href="Gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+<header class="row dark">
+    <div class="text">
+
+        <h2 class="subhead">Get in Touch</h2>
+        <p>If you’re interested in my work or want to talk car builds, use the form below!</p>
+    </div>
+</header>
+
+<section class="contact-section row light">
+    <div class="text">
+        <h2 class="light">Contact Form</h2>
+        <form class="contact-form" action="#" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="method">Best Method of Contact:</label><br>
+                <select id="method" name="method" required>
+                    <option value="">--Select--</option>
+                    <option value="email">Email</option>
+                    <option value="text">Text</option>
+                    <option value="call">Call</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="4"></textarea>
+            </div>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</section>
+</body>
+</html>
+<footer>
+    <p>&copy; 2025 Guishoots Photography. All rights reserved.</p>
+    </footer
